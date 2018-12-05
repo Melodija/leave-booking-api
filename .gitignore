@@ -1,2 +1,4 @@
 # Dependency Modules
 node_modules/
+
+.env
