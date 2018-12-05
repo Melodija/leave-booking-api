@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const productRouter = require('./routes/productRouter');
 
 const app = express();
-const port = process.env.PORT || 3000;
-const db = mongoose.connect('mongodb://@ds123844.mlab.com:23844/jedi-cycle');
+const port = process.env.PORT || 80;
+const db = mongoose.connect(process.env.DB_CONNECTION);
 
 mongoose.set('debug', true);
 
