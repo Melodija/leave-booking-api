@@ -14,6 +14,14 @@ productRouter.route('/')
     product.save()
     res.status(201).send(product)
   })
+  
+productRouter.route('/category/:category')
+  .get((req, res) => {
+    console.log(req)
+    Product.find({ category: req.params.category }, (err, products) => {
+      res.json(products)
+    })
+})
 
 
   productRouter.use('/:productId', (req, res, next) => {
