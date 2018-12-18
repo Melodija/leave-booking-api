@@ -14,6 +14,6 @@ RUN npm install
 EXPOSE 80
 
 # Define environment variable
-ENV DB_CONNECTION mongodb://admin:9FVvGRDcvXY7M@ds123844.mlab.com:23844/jedi-cycle
+
 # Run app.py when the container launches
 CMD ["npm", "start"]

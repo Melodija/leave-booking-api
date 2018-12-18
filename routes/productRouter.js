@@ -1,12 +1,24 @@
-const express = require('express');
-const Product = require('../models/productModel');
-const productRouter = express.Router();
+const express = require('express'),
+      session = require('express-session'),
+      uuid = require ('uuid/v4');
+
+const productRouter = express.Router(),
+      Product = require('../models/productModel');
+
+productRouter.use('/', (req, res, next) => {
+  if(req.isAuthenticated()) {
+    next()
+  } else {
+    res.status(401).send('Not authenticated')
+  }
+})
 
 productRouter.route('/')
   .get((req,res) => {
-    Product.find({}, (err, products) => {
-      res.json(products)
-    })
+    console.log('UUID: ' +req.sessionID)
+        Product.find({}, (err, products) => {
+          res.json(products)
+        })
   })
 
   .post((req,res) => {
