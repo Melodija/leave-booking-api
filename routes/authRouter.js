@@ -10,12 +10,12 @@ const authRouter = express.Router();
 
 authRouter.route('/login')
   .get((req, res) => {
-  res.send(`login`, {user: req.user})
-})
+    res.send(`login`, {user: req.user})
+  })
 
-.post(passport.authenticate('local'), (req, res, next) => {
-  res.redirect('/product');
-})
+  .post(passport.authenticate('local'), (req, res, next) => {
+    res.redirect('/product');
+  })
 
 authRouter.route('/logout')
   .get((req, res) => {

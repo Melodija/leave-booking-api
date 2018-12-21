@@ -1,12 +1,12 @@
-const passport = require("passport"),
-      LocalStrategy = require("passport-local").Strategy,
-      mongoose = require("mongoose"),
-      User = require('./models/userModel'),
-      bcrypt = require("bcrypt-nodejs");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const mongoose = require("mongoose");
+const User = require('../models/userModel');
+const bcrypt = require("bcrypt-nodejs");
 
 passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
+  (username, password, done) => {
+    User.findOne({ username: username }, (err, user) => {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });

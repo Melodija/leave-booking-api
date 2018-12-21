@@ -5,13 +5,13 @@ const express = require('express'),
 const productRouter = express.Router(),
       Product = require('../models/productModel');
 
-productRouter.use('/', (req, res, next) => {
-  if(req.isAuthenticated()) {
-    next()
-  } else {
-    res.status(401).send('Not authenticated')
-  }
-})
+// productRouter.use('/', (req, res, next) => {
+//   if(req.isAuthenticated()) {
+//     next()
+//   } else {
+//     res.status(401).send('Not authenticated')
+//   }
+// })
 
 productRouter.route('/')
   .get((req,res) => {
