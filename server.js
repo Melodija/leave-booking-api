@@ -9,9 +9,9 @@ const FileStore = require('session-file-store')(session)
 const passport = require('passport');
 const corsConfig = require('./config/cors-options')
 
-const productRouter = require('./routes/productRouter'),
-      authRouter = require('./routes/authRouter'),
-      galleryRouter = require('./routes/galleryRouter');
+const articleRouter = require('./routes/articleRouter'),
+      authRouter = require('./routes/authRouter');
+      // galleryRouter = require('./routes/galleryRouter');
 
 const app = express(),
       port = process.env.PORT || 8080,
@@ -39,8 +39,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', (req, res) => res.redirect('/product'));
-app.use('/product', productRouter);
-app.use('/gallery', galleryRouter);
+app.use('/article', articleRouter);
+// app.use('/gallery', galleryRouter);
 app.use(authRouter);
 
 app.listen(port, () => console.log(`App listening on port ${port}`));
